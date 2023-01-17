@@ -8,6 +8,7 @@ function Menus(){
 
     let [menu,SetMenu] = useState([])
     let [categories ,SetCategory] = useState([])
+    let [loading,SetLoading] = useState(true)
 
    async function  getAllMenus(){
         const API_URL ="https://www.themealdb.com/api/json/v1/1/search.php?f=C"
@@ -16,6 +17,7 @@ function Menus(){
          let response = await fetch(API_URL)
          let data = await  response.json()
          SetMenu (data.meals)
+         SetLoading(false)
       
     }
 
@@ -38,7 +40,7 @@ getAllCategories();
     },[])    
 
  menu.map((item)=>{
-console.log(item);
+
         return(
 <>
                <img src={item.strMealThumb}  alt="" />
@@ -55,8 +57,9 @@ console.log(item);
     return(
         <>
    <Hero />
-    <SpecialDishes SpecialDish={menu}/>
-    <FilteredDishes  categoriesData ={categories} allMenus={menu}/>
+   {!loading == true?  <SpecialDishes SpecialDish={menu}/> :<h1>Loading</h1> }
+   {!loading ?  <FilteredDishes  categoriesData ={categories} allMenus={menu}/>:null}
+   
         </>
     )
 }
