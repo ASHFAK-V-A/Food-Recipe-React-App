@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Hero  from "./Hero";
-
+import SpecialDishes from "./SpecialDishes";
 function Menus(){
 
     let [menu,SetMenu] = useState([])
@@ -38,7 +38,7 @@ console.log(item);
     return(
         <>
    <Hero />
-    
+    <SpecialDishes SpecialDish={menu}/>
         </>
     )
 }
