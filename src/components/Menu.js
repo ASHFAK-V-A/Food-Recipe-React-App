@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import Hero  from "./Hero";
 import SpecialDishes from "./SpecialDishes";
 import FilteredDishes from "./FilteredDishes";
+
 function Menus(){
 
     let [menu,SetMenu] = useState([])
@@ -31,7 +32,7 @@ function Menus(){
 }
 
 
-console.log(SetCategory);
+
    
 
     useEffect (()=>{
@@ -57,7 +58,7 @@ getAllCategories();
     return(
         <>
    <Hero />
-   {!loading == true?  <SpecialDishes SpecialDish={menu}/> :<h1>Loading</h1> }
+   {!loading === true?  <SpecialDishes SpecialDish={menu}/> :null}
    {!loading ?  <FilteredDishes  categoriesData ={categories} allMenus={menu}/>:null}
    
         </>
