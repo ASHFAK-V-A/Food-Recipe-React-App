@@ -4,7 +4,7 @@ import Popup from "./Popup";
 
 
 function SpecialDishes(props){
-let [showPopUp , setShowPopup] = useState(true)
+let [showPopUp , setShowPopup] = useState(false)
 
     let MaxSpecialDishes = 8;
 
