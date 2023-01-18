@@ -62,7 +62,7 @@ return(
 }).map((menuitem)=>{
     return(
 <>
-     <CardDishes menuitem={menuitem}/>
+     <CardDishes  menuitem={menuitem}/>
 </>
           
     )

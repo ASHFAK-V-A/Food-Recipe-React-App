@@ -1,6 +1,10 @@
+import { useState } from "react";
 import CardDishes from "./CardDishes";
+import Popup from "./Popup";
+
 
 function SpecialDishes(props){
+let [showPopUp , setShowPopup] = useState(true)
 
     let MaxSpecialDishes = 8;
 
@@ -12,7 +16,7 @@ let TotalMenus = props.SpecialDish.map((item,index)=>{
 return(
     <>
 
-          < CardDishes item={item} />
+          < CardDishes menuitem={item} />
 
     </>
 )
@@ -24,7 +28,9 @@ return(
 
 
     return(
-<section className="special-dishes">
+      
+<section className="special-dishes"> 
+{showPopUp  && <Popup />}
     <div className="container">
 <div className="special-dishes-content text-center">
     <h2>Our Special Dishes</h2>
