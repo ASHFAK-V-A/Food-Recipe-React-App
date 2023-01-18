@@ -9,9 +9,8 @@ export default function FilteredDishes( props) {
 let [allMenus,setAllMenu] = useState(props.allMenus)
 let [filteredDish,setFileteddish] = useState([])
 let [activeDish,setActiveDish] = useState("Beef")
-let [currentPage,setCurrnetpage] = useState(1)
+let [currentPage,setCurrentPage] = useState(1)
 let [ItemPerpage,setItemPerpage] = useState(4)
-
 
 //Pagination
 
@@ -34,7 +33,10 @@ let indexOffirstDish = indexOfLastDish - ItemPerpage
 let showdishesnow = filteredDish.slice(indexOffirstDish,indexOfLastDish)
 
 
-let singleDishItems = props.singleDish.map((item)=>{
+let MaxSpecialDishes = 8;
+
+let singleDishItems = props.singleDish.map((item,index)=>{
+    if(index < MaxSpecialDishes){
     return(
         <>
          <li>
@@ -44,6 +46,7 @@ let singleDishItems = props.singleDish.map((item)=>{
         </>
                   
             )
+    }
 })
 
 function ShowFilteredDishesHandler(categorie){
@@ -71,14 +74,17 @@ return(
  setFileteddish(filteredDishesAre)
     }
 
-
-
     let allCategories=props.categoriesData.map((item)=>{
         return(
             <>
-             <li className={item.strCategory == activeDish ?"active":""} onClick={()=>{ShowFilteredDishesHandler(item.strCategory)}}>{item.strCategory}</li>
+             <li className={item.strCategory == activeDish ?"active":""}
+
+              onClick={()=>{ShowFilteredDishesHandler(item.strCategory)}}>
+
+                {item.strCategory}
+
+                </li>
             </>
-           
         )
     })
 
@@ -104,19 +110,26 @@ return(
 
     <ul className="flex flex-wrap gap">
         {singleDishItems}
-        {showdishesnow.length !=0 ?showdishesnow : 
+        {singleDishItems.length !=0|| showdishesnow.length !=0 ?showdishesnow : 
         <div className='alert'>
-            <h3>Sorry,No items found.</h3>
+            <h3>Sorry,No items found. </h3>
             <h4>Please,try another dishes</h4>
             </div>
             }
 
     </ul>
  </div>
-<Pagination filteredDishesAre={filteredDish}
-ItemPerpage={ItemPerpage} />
 
-    </div>
+
+<Pagination filteredDishesAre={filteredDish}
+ItemPerpage={ItemPerpage} 
+currentPage = {currentPage}
+setCurrnetpage={setCurrentPage} 
+
+
+/> 
+
+</div>
     </div>
   )
 
