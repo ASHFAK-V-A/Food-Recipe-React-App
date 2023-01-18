@@ -213,4 +213,49 @@ margin-bottom: 33px;
               }
             }
           }
+          header {
+            position: absolute;
+            z-index: 1;
+            width: 100%;
+            padding: 0px 50px;
+            background-color: rgba(73,69,48,0.5);
           
+            .logo {
+              background-color: #ffb902;
+              color: rgb(34, 33, 33);
+              width: 70px;
+              height: 70px;
+              border-radius: 50%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              text-align: center;
+              font-weight: bold;
+              border: 5px solid rgba(255,255,255, 0.5);
+            }
+          
+            nav {
+              li{
+                margin: 0 10px;
+          
+                &:hover {
+                  a{
+                    color: #ff4848;
+                  }
+                }
+              }
+              a {
+                color: white;
+                font-size: 18px;
+                font-weight: 500;
+                padding: 12px;
+                transition: color ease 0.3s;
+              }
+            }
+          }
+
+          .headerul{
+            display: flex;
+            justify-content: right;
+            list-style: none;
+          }

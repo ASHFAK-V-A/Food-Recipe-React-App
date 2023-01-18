@@ -1,3 +1,5 @@
+import CardDishes from "./CardDishes";
+
 function SpecialDishes(props){
 
     let MaxSpecialDishes = 8;
@@ -10,10 +12,7 @@ let TotalMenus = props.SpecialDish.map((item,index)=>{
 return(
     <>
 
-            <li>
-            <img src={item.strMealThumb} className="border-radius" />
-            <h4>{item.strMeal} </h4>
-            </li>
+          < CardDishes item={item} />
 
     </>
 )
