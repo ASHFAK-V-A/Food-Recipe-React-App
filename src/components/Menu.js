@@ -10,11 +10,11 @@ function Menus(){
     let [menu,SetMenu] = useState([])
     let [categories ,SetCategory] = useState([])
     let [loading,SetLoading] = useState(true)
+    let [singalDish,SetsingleDish] = useState([])
+
 
    async function  getAllMenus(){
-        const API_URL ="https://www.themealdb.com/api/json/v1/1/search.php?f=C"
- 
-
+        const API_URL ="https://www.themealdb.com/api/json/v1/1/search.php?f=c"
          let response = await fetch(API_URL)
          let data = await  response.json()
          SetMenu (data.meals)
@@ -31,13 +31,23 @@ function Menus(){
   
 }
 
+    
+async function  getOnlyoneDish(){
+    const API_URL ="https://www.themealdb.com/api/json/v1/1/filter.php?c=Beef"
+     let response = await fetch(API_URL)
+     let singaldishdata = await  response.json()
+     SetsingleDish(singaldishdata.meals)
+  
+}
+
 
 
    
 
-    useEffect (()=>{
+useEffect (()=>{
 getAllMenus();
 getAllCategories();
+getOnlyoneDish();
     },[])    
 
  menu.map((item)=>{
@@ -53,13 +63,17 @@ getAllCategories();
  
 
     })
-  
+
 
     return(
         <>
    <Hero />
    {!loading === true?  <SpecialDishes SpecialDish={menu}/> :null}
-   {!loading ?  <FilteredDishes  categoriesData ={categories} allMenus={menu}/>:null}
+   {!loading ?  <FilteredDishes  
+   categoriesData ={categories} 
+   allMenus={menu}
+   singleDish={singalDish}
+   setsigledish={SetsingleDish}/>:null}
    
         </>
     )

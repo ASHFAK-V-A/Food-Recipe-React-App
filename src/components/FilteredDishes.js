@@ -1,19 +1,57 @@
 import React, { useState } from 'react'
+import Pagination from './Pagination'
 
 export default function FilteredDishes( props) {
 
 
+    //States 
+
 let [allMenus,setAllMenu] = useState(props.allMenus)
+let [filteredDish,setFileteddish] = useState([])
+let [activeDish,setActiveDish] = useState("Beef")
+let [currentPage,setCurrnetpage] = useState(1)
+let [ItemPerpage,setItemPerpage] = useState(4)
 
-let [filteredDish, setFileteddish] = useState([])
 
-let [activeDish,setActiveDish] = useState()
+//Pagination
+
+let indexOfLastDish= currentPage * ItemPerpage;
+
+// Explain more
+
+// 1 X 4 = 4;
+// 2 X 4 = 8;
+// 3 x 4 = 12;
+
+let indexOffirstDish = indexOfLastDish - ItemPerpage
+
+// 4 - 4 =0;
+// 8 - 4 =4;
+// 12 - 4 =8;
+
+// Slice Method
+
+let showdishesnow = filteredDish.slice(indexOffirstDish,indexOfLastDish)
 
 
+let singleDishItems = props.singleDish.map((item)=>{
+    return(
+        <>
+         <li>
+            <img src={item.strMealThumb} className="border-radius alt="/>
+             <h2>{item.strMeal}</h2>
+            </li>
+        </>
+                  
+            )
+})
 
-    function ShowFilteredDishesHandler(categorie){
+function ShowFilteredDishesHandler(categorie){
+props.setsigledish([])
 setActiveDish(categorie)
+
 let  filteredDishesAre= allMenus.filter((item)=>{
+
 return(
     item.strCategory ===categorie
 )
@@ -33,8 +71,8 @@ return(
  setFileteddish(filteredDishesAre)
     }
 
-    console.log(filteredDish.length);
-    
+
+
     let allCategories=props.categoriesData.map((item)=>{
         return(
             <>
@@ -61,8 +99,12 @@ return(
 </ul>
 </div>
  <div className="filtered-dishes-results">
+    
+
+
     <ul className="flex flex-wrap gap">
-        {filteredDish.length !=0 ? filteredDish : 
+        {singleDishItems}
+        {showdishesnow.length !=0 ?showdishesnow : 
         <div className='alert'>
             <h3>Sorry,No items found.</h3>
             <h4>Please,try another dishes</h4>
@@ -71,6 +113,9 @@ return(
 
     </ul>
  </div>
+<Pagination filteredDishesAre={filteredDish}
+ItemPerpage={ItemPerpage} />
+
     </div>
     </div>
   )
