@@ -2,6 +2,7 @@ import React from 'react'
 
 function Popup({closePopupHandler,currentDish,Totalmenus}) {
 
+  console.log(Totalmenus);
   let Dishdetails = Totalmenus.filter((menuItem)=>{
     return menuItem.strMeal == currentDish
   }).map((item)=>{
@@ -9,21 +10,32 @@ function Popup({closePopupHandler,currentDish,Totalmenus}) {
       <div className='popup-contnet-data'>
                <div className='popup-header'> 
               <img src={item.strMealThumb} alt="" />    
-               </div>
- 
-              <h2>{item.strMeal} </h2>  
-      </div>
+             <h5  className='popup-header-category'>{item.strCategory}</h5>
+                 </div> 
+
+                    <h2>{item.strMeal}</h2>
+                  
+
+               <ul  className='dish-ingredients'>
+                  <li>{item.strIngredient1}</li>
+                  <li>{item.strIngredient2}</li>
+                  <li>{item.strIngredient3}</li>
+                  <li>{item.strIngredient4}</li>
+               </ul>
+  <p>{item.strInstructions}</p>
+       </div>
     )
   })
   return (
     <div className='popup'>   
         <div className='popup-content'> 
         {Dishdetails}
-            <div className='btn-align'>  
-           <button>Order Now</button>   </div> 
+  
+          
+           <button>Order Now</button> 
            <button className='popup-close' onClick={closePopupHandler}>Close</button>
-        
-       </div>
+        </div> 
+ 
   
 </div>
   )
