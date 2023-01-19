@@ -299,16 +299,13 @@ margin-bottom: 33px;
             height: 700px;
             border-radius: 5px;
             padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        
           }
         
           &-close {
             position: absolute;
-            top: 25px;
-            right: 25px;
-            color: white;
+            top: 30rem;
+            color: black;
             font-weight: 600;
             font-size: 14px;
             cursor: pointer;
@@ -323,7 +320,6 @@ margin-bottom: 33px;
   button {
     border: none;
     outline: none;
-
     background-color: #ffb902;
     color: black;
     padding: 12px 22px;
@@ -336,12 +332,23 @@ margin-bottom: 33px;
     transition: all ease 0.3s;
 
     &:hover {
-      background-color: #ff4848;
+      background-color: #000000;
+      color: white;
     }
+  }
+  .popup-header{
+    height: 50vh;
+    overflow: hidden;
+    margin-bottom: 22px;
+  }
+  img{
+    width: 100%;
+    height: 100%;
   }
 }
 
 .btn-align{
   position: absolute;
-  top: 18pc;
+  top: 30pc;
+  right: 13rem;
 }

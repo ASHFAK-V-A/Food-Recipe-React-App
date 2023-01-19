@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import Hero  from "./Hero";
 import SpecialDishes from "./SpecialDishes";
 import FilteredDishes from "./FilteredDishes";
+import Header from "./Header";
 
 function Menus(){
 
@@ -62,14 +63,19 @@ getOnlyoneDish();
         
  
 
-    })
+     })
 
 
     return(
         <>
+        {/* Components */}
+  <Header />
    <Hero />
-   {!loading === true?  <SpecialDishes SpecialDish={menu}/> :null}
-   {!loading ?  <FilteredDishes  
+   {!loading === true? 
+    <SpecialDishes SpecialDish={menu}/> :null}
+   {!loading ?  
+   <FilteredDishes  
+     /////
    categoriesData ={categories} 
    allMenus={menu}
    singleDish={singalDish}
