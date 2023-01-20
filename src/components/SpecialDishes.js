@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import CardDishes from "./CardDishes";
 import { AllMenuContext } from "./AllMenuContext";
 import Popup from "./Popup";
-
+import AddToCart from "./AddToCart";
 
 function SpecialDishes(props){
     
@@ -55,6 +55,7 @@ return(
 currentDish={currentDish}
 />}
      <div className="container">
+        <AddToCart />
 <div className="special-dishes-content text-center">
     <h2>Our Special Dishes</h2>
     <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequuntur nulla iure atque? Illo repellat iste, soluta tempora officia labore commodi reiciendis voluptatem veritatis tenetur?</p> 
