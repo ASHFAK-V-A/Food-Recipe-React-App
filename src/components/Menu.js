@@ -117,7 +117,6 @@ getOnlyoneDish();
    {!loading ?  
    <FilteredDishes  
    categoriesData ={categories} 
-   allMenus={menu}
    singleDish={singalDish}
    setsigledish={SetsingleDish}/>:null}
    </AllMenuContext.Provider>
@@ -125,5 +124,8 @@ getOnlyoneDish();
         ///====//
     )
 }
+
+
+
 
 export default Menus

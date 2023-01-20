@@ -1,6 +1,5 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import CardDishes from "./CardDishes";
-import { AllMenuContext } from "./Menu";
 import Popup from "./Popup";
 
 
@@ -8,11 +7,6 @@ function SpecialDishes(props){
     
 let [showPopUp , setShowPopup] = useState(false)
 let [currentDish,setCurrentDish] = useState('')
-
-// Step 5 assign into a variable using useContext
-const allMenus = useContext(AllMenuContext)
-
-
 
 //Lets Show Popup Handler
 function showPopupHandler (dishname){
@@ -30,9 +24,8 @@ function closePopupHandler(){
 
     let MaxSpecialDishes = 8;
 
-// Step 6 using that context
 
-let TotalMenus = allMenus.map((item,index)=>{
+let TotalMenus = props.SpecialDish.map((item,index)=>{
     if(index < MaxSpecialDishes){
 return(
      <>
@@ -53,7 +46,7 @@ return(
 <section className="special-dishes"> 
 {showPopUp  && <Popup closePopupHandler={closePopupHandler} 
 currentDish={currentDish}
-/>}
+Totalmenus={props.SpecialDish} />}
      <div className="container">
 <div className="special-dishes-content text-center">
     <h2>Our Special Dishes</h2>
