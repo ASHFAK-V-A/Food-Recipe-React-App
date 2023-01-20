@@ -1,5 +1,5 @@
 import React ,{useContext} from 'react'
-import { AllMenuContext } from './Menu';
+import { AllMenuContext } from './AllMenuContext';
 
 
 function Popup({closePopupHandler,currentDish,Totalmenus}) {
@@ -7,8 +7,8 @@ function Popup({closePopupHandler,currentDish,Totalmenus}) {
 
   const allMenus = useContext(AllMenuContext)
 
-  let Dishdetails = allMenus .filter((menuItem)=>{
-    return menuItem.strMeal == currentDish
+  let Dishdetails = allMenus.filter((menuItem)=>{
+    return menuItem.strMeal ==currentDish
   }).map((item)=>{
     return (
       <div className='popup-contnet-data'>
@@ -34,8 +34,7 @@ function Popup({closePopupHandler,currentDish,Totalmenus}) {
     <div className='popup'>   
         <div className='popup-content'> 
         {Dishdetails}
-  
-          
+
            <button>Order Now</button> 
            <button className='popup-close' onClick={closePopupHandler}>Close</button>
         </div> 

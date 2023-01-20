@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import CardDishes from "./CardDishes";
-import { AllMenuContext } from "./Menu";
+import { AllMenuContext } from "./AllMenuContext";
 import Popup from "./Popup";
 
 
@@ -38,13 +38,13 @@ return(
      <>
       <CardDishes
        menuitem={item} 
-      showPopUp={showPopupHandler}
-
-      />
+      showPopUp={showPopupHandler} />
       </>
        )
         }
-        })
+
+        }
+        )
 
 
 
