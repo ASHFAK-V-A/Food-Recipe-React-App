@@ -8,7 +8,7 @@ function SpecialDishes(props){
     
 let [showPopUp , setShowPopup] = useState(false)
 let [currentDish,setCurrentDish] = useState('')
-let [addToCartItem, setAddtoCart] = useState("")
+let [addToCartItem, setAddtoCart] = useState([])
 // Step 5 assign into a variable using useContext
 const allMenus = useContext(AllMenuContext)
 
@@ -30,11 +30,19 @@ function closePopupHandler(){
 
 /// Add To Cart Handler
 
-function AddToCartHandler (CartImg){
-setAddtoCart(CartImg)
-console.log(setAddtoCart);
-}
+function AddToCartHandler (CartImg,CartItem){
+setAddtoCart(
+    [
+        ...addToCartItem,
+     {
+        "img":CartImg,
+        "title":CartItem
+     }
+     
+]
+)
 
+}
 
 
 
