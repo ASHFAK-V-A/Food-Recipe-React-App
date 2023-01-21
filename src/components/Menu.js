@@ -1,11 +1,12 @@
 
 
-
+import { BrowserRouter as Router,Route,Switch } from "react-router-dom";
 import Hero  from "./Hero";
 import SpecialDishes from "./SpecialDishes";
 import FilteredDishes from "./FilteredDishes";
 import Header from "./Header";
 import { AllMenus } from "./AllMenuContext";
+import Checkout from "./Checkout";
 
 
 
@@ -15,23 +16,32 @@ function Menus(){
 
     return(
         <>
- {/* Components */}
-  <Header />
-   <Hero />
 
+<Router>
+ 
+ <Header />
+      <Hero />
 
-{/* Step 2  = Creating Wrapper  for passing into child components*/}
+    <Switch>
+          <Route exact path="/">
+               <AllMenus> 
+                <SpecialDishes /> 
+                 <FilteredDishes  />
+                    </AllMenus>
+          </Route>
 
-<AllMenus> 
+          <Route path="/checkout">
+                <Checkout />
+          </Route>
 
-   
-    <SpecialDishes /> 
-    
-   <FilteredDishes  />
-  </AllMenus>
+       
+    </Switch>
+
+     </Router>
+
         </>
-        ///====//
-    )
+    
+    ) 
 }
 
 export default Menus
