@@ -7,7 +7,7 @@ import FilteredDishes from "./FilteredDishes";
 import Header from "./Header";
 import { AllMenus } from "./AllMenuContext";
 import Checkout from "./Checkout";
-
+import { AppProvider } from "../Context/AppProvider";
 
 
 function Menus(){
@@ -23,17 +23,18 @@ function Menus(){
       <Hero />
 
     <Switch>
+        <AppProvider>
           <Route exact path="/">
                <AllMenus> 
                 <SpecialDishes /> 
                  <FilteredDishes  />
-                    </AllMenus>
+                    </AllMenus>        
           </Route>
 
           <Route path="/checkout">
-                <Checkout />
+        <Checkout />
           </Route>
-
+</AppProvider>
        
     </Switch>
 

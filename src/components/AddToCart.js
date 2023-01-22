@@ -1,7 +1,12 @@
+import { useContext } from "react";
+import { StateContext } from "../Context/AppProvider";
 
-const AddToCart = ({addToCart})=>{
-console.log(addToCart.img);
-let addToCartItem = addToCart.map((Item)=>{
+
+const AddToCart = ()=>{
+
+    const cartPackage = useContext(StateContext)
+console.log(cartPackage.cartItems);
+let addToCartItem = cartPackage.cartItems.map((Item)=>{
 
 return(
 <div className="addcart">
@@ -16,8 +21,8 @@ return(
 return(
     <div className="add-to-cart-wrapper"> 
     <div className="add-to-cart-item">
-<h6 className="Your-Cart">Your Cart</h6>
-      {addToCartItem}
+<h6 className="Your-Cart">WishList</h6>
+{addToCartItem}
  </div>
     </div>
     
