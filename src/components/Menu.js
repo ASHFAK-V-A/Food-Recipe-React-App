@@ -29,16 +29,13 @@ function Menus(){
                 <SpecialDishes /> 
                  <FilteredDishes  />
                     </AllMenus>        
-          </Route>
-
-          <Route path="/checkout">
-        <Checkout />
-          </Route>
-</AppProvider>
-       
-    </Switch>
-
-     </Router>
+                      </Route>
+                        <Route path="/checkout">
+                        <Checkout />
+                       </Route>
+                    </AppProvider>
+                 </Switch>
+               </Router>
 
         </>
     

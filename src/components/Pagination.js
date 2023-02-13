@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 function Pagination(props) {
   
-
+let [activePage,setActivePage]=useState(1)
 
     let numberofpages=[]
 
@@ -10,15 +10,15 @@ function Pagination(props) {
         numberofpages.push(i)
     }
 
-
+console.log(numberofpages);
 
 
     let pages = numberofpages.map((pagenumber)=>{
         return(
-            <li id={pagenumber} onClick={showNextDishesHandler}>{pagenumber}</li>
+            <li className={pagenumber==activePage?"active":""} id={pagenumber} onClick={showNextDishesHandler}>{pagenumber}</li>
         )
-    })
 
+    })
   return (
     <section>
   <ul className='pagination flex'>
@@ -30,7 +30,7 @@ function Pagination(props) {
   function showNextDishesHandler(event){
     let currentPage = event.target.id
      props.setCurrnetpage(currentPage)
-
+     setActivePage(currentPage)
 }
 }
 

@@ -19,7 +19,7 @@ return(
 
 })
 return(
-    <div className="add-to-cart-wrapper"> 
+    <div  className="add-to-cart-wrapper"> 
     <div className="add-to-cart-item">
 <h6 className="Your-Cart">WishList</h6>
 {addToCartItem}

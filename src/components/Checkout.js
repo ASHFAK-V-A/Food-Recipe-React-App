@@ -6,13 +6,18 @@ const Checkout= ()=>{
  
     console.log("Pacd",cartPackage);
 
-    let addToCartItem = cartPackage.cartItems.map((Item)=>{
-
+  let items = cartPackage.cartItems.map((Item)=>{
+console.log(cartPackage);
         return(
-        <div className="addcart">
-            <img src={Item.img} alt="" />
-            <h6>{Item.title}</h6>
-        </div>
+        
+<>
+
+ <img className="checkoutimg" src={Item.img} alt="" />
+            <h2>{Item.title}</h2>  
+     
+
+</>
+        
         
            
         )
@@ -20,9 +25,15 @@ const Checkout= ()=>{
         
         })
     return(
-        <div className="Checkout">
-{addToCartItem}
-        </div>
+
+        <>
+       <div className="container-checkout">
+            <div className="card-checkout">
+    
+{items}
+</div></div>
+    </>
+ 
         
     )
 

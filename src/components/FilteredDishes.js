@@ -92,6 +92,7 @@ let singleDishItems = singalDish.map((item,index)=>{
 })
 
 function ShowFilteredDishesHandler(categorie){
+
     SetsingleDish([])
 setActiveDish(categorie)
 

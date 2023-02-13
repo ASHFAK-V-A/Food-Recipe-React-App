@@ -213,6 +213,11 @@ margin-bottom: 33px;
                 background-color: #ffb902;
                 border-color: #ffb902;
               }
+              &.active {
+                background-color: black;
+                color: white;
+              }
+        
             }
           }
           header {
@@ -484,4 +489,24 @@ margin-bottom: 33px;
   margin: 5px 0px;
   padding: 5px 0;
   border-bottom: 2px dashed black;
+}
+
+
+.container-checkout{
+  display: flex;
+  margin: 10px 0;
+}
+
+.card-checkout{
+
+ display: flex;
+  width: 211px;
+
+  h2{
+    margin-left: -166px;
+  }
+
+}
+.checkoutimg{
+  margin: 66px;
 }
