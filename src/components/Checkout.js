@@ -9,17 +9,18 @@ const Checkout= ()=>{
   let items = cartPackage.cartItems.map((Item)=>{
 console.log(cartPackage);
         return(
-        
-<>
+    
 
- <img className="checkoutimg" src={Item.img} alt="" />
-            <h2>{Item.title}</h2>  
-     
+ 
+    <div style={{margin:30}}>
 
-</>
-        
-        
-           
+ 
+       <li>
+   <img src={Item.img} className='border-radius' alt="" />
+            <h2>{Item.title}</h2>    
+
+       </li>
+         </div>     
         )
 
         
@@ -27,11 +28,12 @@ console.log(cartPackage);
     return(
 
         <>
-       <div className="container-checkout">
-            <div className="card-checkout">
-    
-{items}
-</div></div>
+  <div className="special-dishes-list">
+  <ul className="flex flex-wrap" style={{marginLeft:80}}>
+  {items}
+    </ul>
+    </div>
+
     </>
  
         
