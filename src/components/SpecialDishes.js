@@ -1,14 +1,16 @@
-import { useState } from "react";
+import { useState,useContext } from "react";
 import CardDishes from "./CardDishes";
 import { AllMenuContext } from "./AllMenuContext";
 import Popup from "./Popup";
 import AddToCart from "./AddToCart";
 
 function SpecialDishes(props){
-    
+    console.log("septe",props);
+    const allMenus = useContext(AllMenuContext)
+
 let [showPopUp , setShowPopup] = useState(false)
 let [currentDish,setCurrentDish] = useState('')
-let [addToCart,setAddtoCart]=useState()
+let [addToCart, setAddtoCart] = useState([])
 //Lets Show Popup Handler
 function showPopupHandler (dishname){
     setCurrentDish(dishname)
@@ -45,19 +47,21 @@ setAddtoCart(
     let MaxSpecialDishes = 8;
 
 
-let TotalMenus = props.SpecialDish.map((item,index)=>{
-    if(index < MaxSpecialDishes){
-return(
-     <>
-      <CardDishes
-       menuitem={item} 
-      showPopUp={showPopupHandler} />
-      </>
-       )
-        }
-
-        }
-        )
+    let TotalMenus = allMenus.map((item,index)=>{
+        if(index < MaxSpecialDishes){
+    return(
+         <>
+          <CardDishes
+           menuitem={item} 
+          showPopUp={showPopupHandler} />
+          </>
+           )
+            }
+    
+            }
+            )
+    
+        console.log(TotalMenus);
 
 
 
@@ -79,7 +83,7 @@ AddToCartHandler={AddToCartHandler}
 </div>
 <div className="special-dishes-list">
 <ul className="flex flex-wrap gap">
-    {TotalMenus}  
+{TotalMenus}
 </ul>
 </div>
    </div>
