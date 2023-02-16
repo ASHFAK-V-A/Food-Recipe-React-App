@@ -2,13 +2,13 @@ import { useState } from "react";
 import CardDishes from "./CardDishes";
 import { AllMenuContext } from "./AllMenuContext";
 import Popup from "./Popup";
-
+import AddToCart from "./AddToCart";
 
 function SpecialDishes(props){
     
 let [showPopUp , setShowPopup] = useState(false)
 let [currentDish,setCurrentDish] = useState('')
-
+let [addToCart,setAddtoCart]=useState()
 //Lets Show Popup Handler
 function showPopupHandler (dishname){
     setCurrentDish(dishname)
@@ -21,6 +21,25 @@ function showPopupHandler (dishname){
 function closePopupHandler(){
     setShowPopup(false)
 }
+
+
+/// Add To Cart Handler
+
+function AddToCartHandler (CartImg,CartItem){
+setAddtoCart(
+    [
+        ...addToCart,
+     {
+        "img":CartImg,
+        "title":CartItem
+     }
+     
+]
+)
+
+}
+
+
 
 
     let MaxSpecialDishes = 8;
@@ -47,8 +66,13 @@ return(
 <section className="special-dishes"> 
 {showPopUp  && <Popup closePopupHandler={closePopupHandler} 
 currentDish={currentDish}
-Totalmenus={props.SpecialDish} />}
+Totalmenus={props.SpecialDish}
+AddToCartHandler={AddToCartHandler}
+/>}
+
+
      <div className="container">
+        <AddToCart addToCart={addToCart}/>
 <div className="special-dishes-content text-center">
     <h2>Our Special Dishes</h2>
     <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequuntur nulla iure atque? Illo repellat iste, soluta tempora officia labore commodi reiciendis voluptatem veritatis tenetur?</p> 

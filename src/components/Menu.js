@@ -1,87 +1,45 @@
 
 
-import React, { useEffect, useState } from "react";
+import { BrowserRouter as Router,Route,Switch } from "react-router-dom";
 import Hero  from "./Hero";
 import SpecialDishes from "./SpecialDishes";
 import FilteredDishes from "./FilteredDishes";
 import Header from "./Header";
 import { AllMenus } from "./AllMenuContext";
-
+import Checkout from "./Checkout";
+import { AppProvider } from "../Context/AppProvider";
 
 
 function Menus(){
-
-    // States
-
-   
-    let [categories ,SetCategory] = useState([])
-
-    let [singalDish,SetsingleDish] = useState([])
-
-   // =========//
-
-
-    // Function's
-    
-   async function  getAllCategories(){
-    const API_URL ="https://www.themealdb.com/api/json/v1/1/categories.php"
-     let response = await fetch(API_URL)
-     let categoryData = await  response.json()
-     SetCategory (categoryData.categories)
-  
-}
-
-    
-async function  getOnlyoneDish(){
-    const API_URL ="https://www.themealdb.com/api/json/v1/1/filter.php?c=Beef"
-     let response = await fetch(API_URL)
-     let singaldishdata = await  response.json()
-     SetsingleDish(singaldishdata.meals)
-  
-}
-
-
-//======//
-
-
-// Hooks created 
-   
-
-useEffect (()=>{
-
-getAllCategories();
-getOnlyoneDish();
-    },[])    
-
- // ------ //
-
-
-
 
 
 
     return(
         <>
- {/* Components */}
-  <Header />
-   <Hero />
 
+<Router>
+ 
+ <Header />
+      <Hero />
 
-{/* Step 2  = Creating Wrapper  for passing into child components*/}
+    <Switch>
+        <AppProvider>
+          <Route exact path="/">
+               <AllMenus> 
+                <SpecialDishes /> 
+                 <FilteredDishes  />
+                    </AllMenus>        
+                      </Route>
+                        <Route path="/checkout">
+                        <Checkout />
+                       </Route>
+                    </AppProvider>
+                 </Switch>
+               </Router>
 
-<AllMenus> 
-
-   
-    <SpecialDishes /> 
-    
-   <FilteredDishes  
-   categoriesData ={categories} 
-   singleDish={singalDish}
-   setsigledish={SetsingleDish}/>
-  </AllMenus>
         </>
-        ///====//
-    )
+    
+    ) 
 }
 
 
