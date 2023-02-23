@@ -4,7 +4,6 @@ import { StateContext } from "../Context/AppProvider"
 const Checkout= ()=>{
     const cartPackage = useContext(StateContext)
  
-    console.log("Pacd",cartPackage);
 
   let items = cartPackage.cartItems.map((Item)=>{
 console.log(cartPackage);

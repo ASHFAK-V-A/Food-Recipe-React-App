@@ -2,10 +2,10 @@ import React, { useContext, useState ,useEffect} from 'react'
 import CardDishes from './CardDishes'
 import Pagination from './Pagination'
 import { AllMenuContext } from './AllMenuContext'
+import Popup from './Popup'
+
+
 export default function FilteredDishes( props) {
-
-
-    //States 
 
     let allMenus = useContext(AllMenuContext)
     let [filteredDish,setFileteddish] = useState([])
@@ -14,11 +14,8 @@ export default function FilteredDishes( props) {
     let [ItemPerpage,setItemPerpage] = useState(4)
     let [categories ,SetCategory] = useState([])
     let [singalDish,SetsingleDish] = useState([])
-
-   // =========//
-
-
-    // Function's
+    let [showPopUp , setShowPopup] = useState(false)
+    let [currentDish,setCurrentDish] = useState('')
     
    async function  getAllCategories(){
     const API_URL ="https://www.themealdb.com/api/json/v1/1/categories.php"
@@ -27,8 +24,16 @@ export default function FilteredDishes( props) {
      SetCategory (categoryData.categories)
   
 }
+function showPopupHandler (dishname){
+    console.log('this is dish name',dishname);
+    setCurrentDish(dishname)
+    setShowPopup(true)
+}
 
-    
+
+function closePopupHandler(){
+    setShowPopup(false)
+}  
 async function  getOnlyoneDish(){
     const API_URL ="https://www.themealdb.com/api/json/v1/1/filter.php?c=Beef"
      let response = await fetch(API_URL)
@@ -37,21 +42,17 @@ async function  getOnlyoneDish(){
   
 }
 
-
+console.log(showPopUp);
 //======//
 
 
-// Hooks created 
-   
+
 
 useEffect (()=>{
 
 getAllCategories();
 getOnlyoneDish();
     },[])    
-
- // ------ //
-
 
 
 //Pagination
@@ -92,27 +93,27 @@ let singleDishItems = singalDish.map((item,index)=>{
 })
 
 function ShowFilteredDishesHandler(categorie){
-
     SetsingleDish([])
 setActiveDish(categorie)
-
 let  filteredDishesAre= allMenus.filter((item)=>{
-
 return(
     item.strCategory ===categorie
 )
 }).map((menuitem)=>{
     return(
        <>
-     <CardDishes  menuitem={menuitem}/>
+    
+     <CardDishes  menuitem={menuitem}
+      showPopUp={showPopupHandler}/>
         </>
-          
     )
 
-
 })
+console.log(filteredDishesAre);
  setFileteddish(filteredDishesAre)
     }
+
+    
 
     let allCategories= categories.map((item)=>{
         return(
@@ -129,25 +130,25 @@ return(
     })
 
   return (
+   
     <div className='filtered-dishes'>
         <div className="container">
         <div className="text-center"> 
        <h2>Choose your dishes</h2>
        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus sequi labore aut a maiores quia ut laudantium dolore. Reprehenderit iusto ut obcaecati voluptatem eligendi exercitationem!</p>
-            
+           {showPopUp  && <Popup  closePopupHandler={closePopupHandler} currentDish={currentDish} ></Popup> }
    </div>
 
     <div className="filterd-dishes">
 
+
 <ul className='flex flex-center'>
     {allCategories}
+
 
 </ul>
 </div>
  <div className="filtered-dishes-results">
-    
-
-
     <ul className="flex flex-wrap gap">
         {singleDishItems}
         {singleDishItems.length !=0|| showdishesnow.length !=0 ?showdishesnow : 
@@ -159,7 +160,6 @@ return(
 
     </ul>
  </div>
-
 
 <Pagination filteredDishesAre={filteredDish}
 ItemPerpage={ItemPerpage} 

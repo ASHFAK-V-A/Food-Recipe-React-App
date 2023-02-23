@@ -10,7 +10,6 @@ let [activePage,setActivePage]=useState(1)
         numberofpages.push(i)
     }
 
-console.log(numberofpages);
 
 
     let pages = numberofpages.map((pagenumber)=>{

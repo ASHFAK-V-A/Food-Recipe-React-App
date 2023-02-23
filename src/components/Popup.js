@@ -4,7 +4,7 @@ import { DispatchContext } from '../Context/AppProvider';
 
 function Popup({closePopupHandler,currentDish,AddToCartHandler}) {
 
-
+console.log(currentDish);
   const allMenus = useContext(AllMenuContext)
 const dispatch= useContext(DispatchContext)
 console.log(dispatch);
@@ -24,10 +24,10 @@ console.log(dispatch);
                <ul  className='dish-ingredients'>
                   <li>{item.strIngredient1}</li>
                   <li>{item.strIngredient2}</li>
-
                   <li>{item.strIngredient3}</li>
                   <li>{item.strIngredient4}</li>
                </ul>
+
                <button onClick={()=>{
                  dispatch({type:"addtocart",
                   payload:{
@@ -36,11 +36,10 @@ console.log(dispatch);
                  }})
                }}>Order Now</button> 
            <button  className='popup-close' onClick={closePopupHandler}>Close</button>
-
-       </div>
+       </div> 
     )
   })
-  return (
+  return ( 
     <div className='popup'>   
         <div className='popup-content'> 
         {Dishdetails} 
