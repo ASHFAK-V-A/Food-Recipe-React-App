@@ -510,3 +510,30 @@ margin-bottom: 33px;
 .checkoutimg{
   margin: 66px;
 }
+
+.main{
+  width: 100%;
+  background-color: black;
+  height: 200px;
+}
+
+.headings{
+  display: flex;
+  justify-content: space-around;
+ 
+  h2{
+    color: white;
+    text-decoration: underline red;
+    letter-spacing: 10px;
+  }
+
+
+
+}
+
+.lorem p{
+  color: white;
+  margin: 50px 0px;
+  align-items: center;
+
+}

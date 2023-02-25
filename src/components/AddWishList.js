@@ -5,9 +5,9 @@ import { StateContext } from "../Context/AppProvider";
 const AddToCart = ()=>{
 
     const cartPackage = useContext(StateContext)
-console.log(cartPackage.cartItems);
+console.log('this is cartpackage',cartPackage);
 let addToCartItem = cartPackage.cartItems.map((Item)=>{
-
+console.log(cartPackage.cartItems);
 return(
 <div className="addcart">
     <img src={Item.img} alt="" />
@@ -18,6 +18,7 @@ return(
 )
 
 })
+
 return(
     <div  className="add-to-cart-wrapper"> 
     <div className="add-to-cart-item">

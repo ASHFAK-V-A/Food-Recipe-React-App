@@ -29,12 +29,12 @@ console.log(dispatch);
                </ul>
 
                <button onClick={()=>{
-                 dispatch({type:"addtocart",
+                 dispatch({type:"addtowishlist",
                   payload:{
                   title: item.strMeal,
                   img:item.strMealThumb
                  }})
-               }}>Order Now</button> 
+               }}>Add to wishlist</button> 
            <button  className='popup-close' onClick={closePopupHandler}>Close</button>
        </div> 
     )

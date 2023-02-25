@@ -6,8 +6,9 @@ import SpecialDishes from "./SpecialDishes";
 import FilteredDishes from "./FilteredDishes";
 import Header from "./Header";
 import { AllMenus } from "./AllMenuContext";
-import Checkout from "./wishlist";
+import WishList from "./wishlist";
 import { AppProvider } from "../Context/AppProvider";
+import Footer from "./Footer";
 
 
 function Menus(){
@@ -30,13 +31,13 @@ function Menus(){
                  <FilteredDishes  />
                     </AllMenus>        
                       </Route>
-                        <Route path="/checkout">
-                        <Checkout />
+                        <Route path="/wishlist">
+                        <WishList />
                        </Route>
                     </AppProvider>
                  </Switch>
                </Router>
-
+<Footer/>
         </>
     
     ) 

@@ -12,10 +12,9 @@ const AppProvider = ({children}) =>{
 
 
     const reducer = (state,action) =>{
-       console.log(action);
-       console.log(state);
+  
 switch(action.type){
-    case "addtocart":
+    case "addtowishlist":
         return {...state,
             cartItems:[
             ...state.cartItems,
@@ -27,7 +26,8 @@ switch(action.type){
 }
     }
     let [state,dispatch] = useReducer(reducer,initialState)
-    console.log(state);
+    
+console.log(state.cartItems==0);
     return(
  <DispatchContext.Provider value={dispatch}>
     <StateContext.Provider value={state}>
