@@ -6,7 +6,7 @@ import SpecialDishes from "./SpecialDishes";
 import FilteredDishes from "./FilteredDishes";
 import Header from "./Header";
 import { AllMenus } from "./AllMenuContext";
-import Checkout from "./Checkout";
+import Checkout from "./wishlist";
 import { AppProvider } from "../Context/AppProvider";
 
 

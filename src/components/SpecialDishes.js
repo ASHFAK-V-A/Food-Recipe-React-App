@@ -2,7 +2,7 @@ import { useState,useContext } from "react";
 import CardDishes from "./CardDishes";
 import { AllMenuContext } from "./AllMenuContext";
 import Popup from "./Popup";
-import AddToCart from "./AddToCart";
+import AddToWishList from "./AddWishList";
 
 
 
@@ -80,7 +80,7 @@ AddToCartHandler={AddToCartHandler}
 
 
      <div className="container">
-        <AddToCart addToCart={addToCart}
+        <AddToWishList addToCart={addToCart}
         />
      <div className="special-dishes-content text-center">
     <h2>Our Special Dishes</h2>
