@@ -20,4 +20,6 @@ The app makes use of the Meal DB API to fetch recipe data.Special thanks to The 
 
 
 
+====================================================================================================================================================================
+
 This Project is a my first huge React project. it helped me getting great knowldge about API fetching and React Hook's Real Concept. i'm used method to getting Data's from MealDB.it's javascript "featch" method then i converted to json fromat.
